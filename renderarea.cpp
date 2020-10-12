@@ -59,7 +59,10 @@ void RenderArea::on_shape_changed()
 
             break;
 
-        case FutureCurve:
+        case Line:
+            m_IntervalLength = 1;
+            m_Scale = 100;
+            m_StepCount = 128;
             break;
 
         default:
@@ -86,8 +89,8 @@ QPointF RenderArea::compute(float t)
             return compute_hypo(t);
             break;
 
-        case FutureCurve:
-            return compute_future_curve(t);
+        case Line:
+            return compute_line(t);
             break;
 
         default:
@@ -120,9 +123,9 @@ QPointF RenderArea::compute_hypo(float t)
     );
 }
 
-QPointF RenderArea::compute_future_curve(float t)
+QPointF RenderArea::compute_line(float t)
 {
-
+    return QPointF(1 - t, 1 - t);
 }
 
 void RenderArea::paintEvent(QPaintEvent *event)
