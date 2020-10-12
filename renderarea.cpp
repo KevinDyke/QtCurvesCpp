@@ -41,12 +41,22 @@ void RenderArea::on_shape_changed()
             break;
 
         case Cycloid:
+            m_Scale = 4;
+            m_IntervalLength = 4 * M_PI;
+            m_StepCount = 256;
             break;
 
         case HuygensCycloid:
+            m_Scale = 4;
+            m_IntervalLength = 6 * M_PI;
+            m_StepCount = 128;
             break;
 
         case HypoCycloid:
+            m_Scale = 15;
+            m_IntervalLength = 2 * M_PI;
+            m_StepCount = 256;
+
             break;
 
         case FutureCurve:
@@ -88,17 +98,26 @@ QPointF RenderArea::compute(float t)
 
 QPointF RenderArea::compute_cycloid(float t)
 {
-
+    return QPointF(
+                1.5 * (1 - cos(t)), // X
+                1.5 * (t - sin(t))  // Y
+    );
 }
 
 QPointF RenderArea::compute_huygens(float t)
 {
-
+    return QPointF(
+                4 * (3 * cos(t) - cos(3 * t)), // X
+                4 * (3 * sin(t) - sin(3 * t))  // Y
+    );
 }
 
 QPointF RenderArea::compute_hypo(float t)
 {
-
+    return QPointF(
+                1.5 * (2 * cos(t) + cos(2 * t)), // X
+                1.5 * (2 * sin(t) - sin(2 * t))  // Y
+    );
 }
 
 QPointF RenderArea::compute_future_curve(float t)
@@ -118,8 +137,6 @@ void RenderArea::paintEvent(QPaintEvent *event)
     painter.drawRect(this->rect());
 
     QPoint center = this->rect().center();
-    m_StepCount = 256;
-    m_Scale = 40;
     float step = m_IntervalLength / m_StepCount;
     for(float t = 0; t < m_IntervalLength; t += step){
         QPointF point = compute(t);
