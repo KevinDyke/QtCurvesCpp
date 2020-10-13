@@ -4,21 +4,21 @@
 #include <QtMath>
 
 RenderArea::RenderArea(QWidget *parent) : QWidget(parent),
-    mBackgroundColor(QColor(0 ,0 ,255)),
-    mShapeColor(255, 255, 255),
-    mShape(Astroid)
+    m_BackgroundColor(QColor(0 ,0 ,255)),
+    m_ShapeColour(255, 255, 255),
+    m_Shape(Astroid)
 {
     on_shape_changed();
 }
 
 QSize RenderArea::minimumSizeHint() const
 {
-    return QSize(100,100);
+    return QSize(400,400);
 }
 
 QSize RenderArea::sizeHint() const
 {
-    return QSize(100,100);
+    return QSize(400,400);
 }
 
 QPointF RenderArea::compute_astroid(float t)
@@ -33,7 +33,7 @@ QPointF RenderArea::compute_astroid(float t)
 
 void RenderArea::on_shape_changed()
 {
-    switch(mShape) {
+    switch(m_Shape) {
         case Astroid:
             m_Scale = 40;
             m_IntervalLength = 2 * M_PI;
@@ -72,7 +72,7 @@ void RenderArea::on_shape_changed()
 
 QPointF RenderArea::compute(float t)
 {
-    switch(mShape) {
+    switch(m_Shape) {
         case Astroid:
             return compute_astroid(t);
             break;
@@ -133,8 +133,8 @@ void RenderArea::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
 
-    painter.setBrush(mBackgroundColor);
-    painter.setPen(mShapeColor);
+    painter.setBrush(m_BackgroundColor);
+    painter.setPen(m_ShapeColour);
 
     // drawing area
     painter.drawRect(this->rect());

@@ -15,11 +15,14 @@ public:
 
     enum ShapeType { Astroid, Cycloid, HuygensCycloid, HypoCycloid, Line };
 
-    void setBackgroundColor(QColor color) { mBackgroundColor = color;}
-    QColor backgroundColor() const {return mBackgroundColor;}
+    void setBackgroundColor(QColor color) { m_BackgroundColor = color;}
+    QColor backgroundColor() const {return m_BackgroundColor;}
 
-    void setShape(ShapeType shape) { mShape = shape; on_shape_changed(); }
-    ShapeType shape() const { return mShape; }
+    void setShapeColour(QColor colour) { m_ShapeColour = colour;}
+    QColor shapeColour() const { return m_ShapeColour;}
+
+    void setShape(ShapeType shape) { m_Shape = shape; on_shape_changed(); }
+    ShapeType shape() const { return m_Shape; }
 
     void setScale (float scale) { m_Scale = scale; repaint();}
     float scale() const { return m_Scale;}
@@ -27,14 +30,17 @@ public:
     void setInterval(float interval) { m_IntervalLength = interval; repaint();}
     float Interval() const { return m_IntervalLength;}
 
+    void setStepCount(int count) { m_StepCount = count; repaint();}
+    int stepCount() const { return m_StepCount;}
+
 protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
     void on_shape_changed();
-    QColor mBackgroundColor;
-    QColor mShapeColor;
-    ShapeType mShape;
+    QColor m_BackgroundColor;
+    QColor m_ShapeColour;
+    ShapeType m_Shape;
 
     float m_IntervalLength;
     float m_Scale;
