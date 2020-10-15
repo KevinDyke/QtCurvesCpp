@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Qt Shape 2D Graphics App</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -94,28 +94,28 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btnCloud_one">
         <property name="text">
-         <string>Flower 1</string>
+         <string>Cloud 1</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="btnCloud_two">
         <property name="text">
-         <string>Flower 2</string>
+         <string>Cloud 2</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="btnStarfish">
         <property name="text">
          <string>Starfish</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="btnEllipse">
         <property name="text">
          <string>Ellipse</string>
         </property>
@@ -129,7 +129,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="btnFancy">
         <property name="text">
          <string>Fancy</string>
         </property>

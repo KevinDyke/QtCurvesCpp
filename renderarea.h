@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QColor>
+#include <QPen>
 
 class RenderArea : public QWidget
 {
@@ -13,13 +14,24 @@ public:
     QSize minimumSizeHint() const Q_DECL_OVERRIDE;
     QSize sizeHint() const Q_DECL_OVERRIDE;
 
-    enum ShapeType { Astroid, Cycloid, HuygensCycloid, HypoCycloid, Line, Circle };
+    enum ShapeType { Astroid,
+                     Cycloid,
+                     HuygensCycloid,
+                     HypoCycloid,
+                     Line,
+                     Circle,
+                     Ellipse,
+                     Fancy,
+                     Starfish,
+                     Cloud_1,
+                     Cloud_2
+    };
 
     void setBackgroundColor(QColor color) { m_BackgroundColor = color;}
     QColor backgroundColor() const {return m_BackgroundColor;}
 
-    void setShapeColour(QColor colour) { m_ShapeColour = colour;}
-    QColor shapeColour() const { return m_ShapeColour;}
+    void setShapeColour(QColor colour) { m_Pen.setColor(colour);}
+    QColor shapeColour() const { return m_Pen.color();}
 
     void setShape(ShapeType shape) { m_Shape = shape; on_shape_changed(); }
     ShapeType shape() const { return m_Shape; }
@@ -39,7 +51,7 @@ protected:
 private:
     void on_shape_changed();
     QColor m_BackgroundColor;
-    QColor m_ShapeColour;
+    QPen m_Pen;
     ShapeType m_Shape;
 
     float m_IntervalLength;
@@ -53,6 +65,12 @@ private:
     QPointF compute_hypo(float t);
     QPointF compute_line(float t);
     QPointF compute_circle(float t);
+    QPointF compute_ellipse(float t);
+    QPointF compute_fancy(float t);
+    QPointF compute_starfish(float t);
+    QPointF compute_cloud_one(float t);
+    QPointF compute_cloud_two(float t);
+    QPointF compute_cloud_with_sign(float t, float sign);
 
 signals:
 

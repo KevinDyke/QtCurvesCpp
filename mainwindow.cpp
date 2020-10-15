@@ -70,6 +70,46 @@ void MainWindow::on_btnCircle_clicked()
     update_ui();
 }
 
+void MainWindow::on_btnEllipse_clicked()
+{
+    this->ui->renderArea->setShape(RenderArea::Ellipse);
+    this->ui->renderArea->repaint();
+
+    update_ui();
+}
+
+void MainWindow::on_btnFancy_clicked()
+{
+    this->ui->renderArea->setShape(RenderArea::Fancy);
+    this->ui->renderArea->repaint();
+
+    update_ui();
+}
+
+void MainWindow::on_btnStarfish_clicked()
+{
+    this->ui->renderArea->setShape(RenderArea::Starfish);
+    this->ui->renderArea->repaint();
+
+    update_ui();
+}
+
+void MainWindow::on_btnCloud_one_clicked()
+{
+    this->ui->renderArea->setShape(RenderArea::Cloud_1);
+    this->ui->renderArea->repaint();
+
+    update_ui();
+}
+
+void MainWindow::on_btnCloud_two_clicked()
+{
+    this->ui->renderArea->setShape(RenderArea::Cloud_2);
+    this->ui->renderArea->repaint();
+
+    update_ui();
+}
+
 void MainWindow::on_spinScale_valueChanged(double scale)
 {
     this->ui->renderArea->setScale(scale);
@@ -96,5 +136,8 @@ void MainWindow::on_btnLineColour_clicked()
     QColor colour = QColorDialog::getColor(ui->renderArea->backgroundColor(),this,"Select Colour");
     ui->renderArea->setShapeColour(colour);
 }
+
+
+
 
 

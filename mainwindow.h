@@ -38,6 +38,16 @@ private slots:
 
     void on_btnCircle_clicked();
 
+    void on_btnEllipse_clicked();
+
+    void on_btnFancy_clicked();
+
+    void on_btnStarfish_clicked();
+
+    void on_btnCloud_one_clicked();
+
+    void on_btnCloud_two_clicked();
+
 private:
     Ui::MainWindow *ui;
     void update_ui();
